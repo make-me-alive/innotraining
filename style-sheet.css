@@ -13,7 +13,7 @@ h1{
     background-color: #252525;
     height: 62px;
     margin: -8px;
-    background-image: url("../innotraining/images/logo.png");
+    background-image: url("../myproject/images/logo.png");
     background-position: 131px;
     background-repeat: no-repeat;
   }
@@ -104,21 +104,21 @@ input
 
 #name,#username
 {
-    background-image: url("../innotraining/images/name.png");
+    background-image: url("../myproject/images/name.png");
     background-position: 98%;
     background-size: 5%;
     background-repeat: no-repeat;
 }
 #email
 {
-    background-image: url("../innotraining/images/mail.png");
+    background-image: url("../myproject/images/mail.png");
     background-position: 99%;
     background-size: 8%;
     background-repeat: no-repeat;
 }
 #mobnum
 {
-    background-image: url("../innotraining/images/con.png");
+    background-image: url("../myproject/images/con.png");
     background-position: 98%;
     background-size: 5%;
     background-repeat: no-repeat;
@@ -126,7 +126,7 @@ input
 }
 #password,#confirmpass
 {
-    background-image: url("../innotraining/images/pass.png");
+    background-image: url("../myproject/images/pass.png");
     background-position: 98%;
     background-size: 6%;
     background-repeat: no-repeat;
