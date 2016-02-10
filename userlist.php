@@ -51,6 +51,49 @@ mysql_select_db("tbl_user",$conn);
           $qry="SELECT * FROM `tbl` WHERE email !='"." "."' and name is not null";
           $raw=mysql_query($qry);
         }
+
+
+        if (!empty($_POST['submit-changes']))
+       {   
+            $qry= "UPDATE `tbl` SET `role_id`='0' WHERE `role_id` = '2'";
+            $fetch=mysql_query($qry);
+            // $res=mysql_fetch_assoc($fetch);
+
+             if(isset($_POST["admin"]))
+             {  
+                 
+
+                $chkname = $_POST['admin']; 
+                foreach ($chkname as $key=>$value)
+                {
+                     // echo $value."<br />";
+                    
+                    
+                    $qry= "SELECT `name`,`role_id` FROM `tbl` WHERE `id` = '$value'";
+                    $fetch=mysql_query($qry);
+                    $res=mysql_fetch_assoc($fetch);
+                    if($res['role_id'] == 0 )
+                    {
+                      
+                      // echo "insert"."<br />";
+                      //  echo $value."<br />";
+                      $qry= "UPDATE `tbl` SET `role_id`='2' WHERE `id` = '$value'"; 
+                      $fetch=mysql_query($qry);
+                     
+                    }
+                    else
+                    {
+                      $qry= "UPDATE `tbl` SET `role_id`='0' WHERE `id` = '$value'"; 
+                      $fetch=mysql_query($qry);
+
+                    }
+
+                 }
+                
+             }
+              
+       }
+
 ?>
 
 
@@ -96,8 +139,9 @@ mysql_select_db("tbl_user",$conn);
  <a  id="viewdesign" href='viewuser.php?user=<?php echo $uid; ?>'> <?php echo VIEW; ?> </a></td>
  
  <td class="shiftbox"><input type="checkbox" id="checkbox" name="admin[]"  
-   
-     value="<?php echo $res["id"]; ?>" > make/remove admin</td>
+      <?php $qry= "SELECT role_id FROM `tbl` WHERE `id` = '$uid'";$fetch=mysql_query($qry);
+      $res=mysql_fetch_assoc($fetch); if($res['role_id'] == 2 ) echo "checked='checked'"; ?>
+     value="<?php echo $uid; ?>" > make/remove admin</td>
  </tr>
   <?php
     }
@@ -107,45 +151,9 @@ mysql_select_db("tbl_user",$conn);
  <?php
        
       
-       // if (!empty($_POST['submit-changes']))
-       // {      
-       //       if(isset($_POST["admin"]))
-       //       {  
-                
+      
 
-       //          $chkname = $_POST['admin']; 
-       //          foreach ($chkname as $key=>$value)
-       //          {
-       //               echo $value."<br />";
-                    
-                    
-       //              // $qry= "SELECT `name`,`role_id` FROM `tbl` WHERE `id` = '$value'";
-       //              // $fetch=mysql_query($qry);
-       //              // $res=mysql_fetch_assoc($fetch);
-       //              // if($res['role_id'] == 0 )
-       //              // {
-       //              //   // if((!empty($_POST["admin"])))
-       //              //   // {  
-       //              //      // print_r ($_POST);
-       //              //   echo "insert"."<br />";
-       //              //    echo $value."<br />";
-       //              //   $qry= "UPDATE `tbl` SET `role_id`='2' WHERE `id` = '$value'"; 
-       //              //   $fetch=mysql_query($qry);
-       //              //   // }
-       //              //   // exit();
-       //              // }
-       //              // else
-       //              // {
-       //              //   $qry= "UPDATE `tbl` SET `role_id`='0' WHERE `id` = '$value'"; 
-       //              //   $fetch=mysql_query($qry);
-
-       //              // }
-
-       //           }
-                
-       //       }
-              
-       // }
+      
         
 
  ?>
