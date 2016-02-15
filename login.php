@@ -64,32 +64,32 @@ else{
 	         
 	        else
 	        {
-				 $qry= "SELECT *  FROM `tbl` WHERE `username` = '$username' AND `encpassword` = '$encpassword'";
-				 $fetch=mysql_query($qry);
-				 $count=mysql_num_rows($fetch);
-				 $res=mysql_fetch_assoc($fetch);
-				        if($count>0) {
-					  	if(isset($_SESSION["rid"]))
-						header("location:userlist.php");
-					    if(isset($_SESSION["sid"]))
-					    header("location:loggedin.php");
-						else{                            
-						$user_id=session_id();
-						$user_time= time();
-						$qry="UPDATE `tbl` SET `uniqueid`='$user_id',`timeid`='$user_time' WHERE 
-					    `username` = '$username' AND `encpassword` = '$encpassword'";
-		                $fetch=mysql_query($qry);
-		                $_SESSION["sid"]=$user_id;
-		                $_SESSION['LAST_ACTIVITY'] = $user_time;
-						header("location:loggedin.php");
-					    }  
-			            }
-						else
-						{
-							$_SESSION["msg"]="Invalid Username / Password";
-							header("location:".$_SERVER['PHP_SELF']);  
-							exit();
-						}
+				$qry= "SELECT *  FROM `tbl` WHERE `username` = '$username' AND `encpassword` = '$encpassword'";
+				$fetch=mysql_query($qry);
+				$count=mysql_num_rows($fetch);
+				$res=mysql_fetch_assoc($fetch);
+		        if($count>0) {
+			  	if(isset($_SESSION["rid"]))
+				header("location:userlist.php");
+			    if(isset($_SESSION["sid"]))
+			    header("location:loggedin.php");
+				else{                            
+				$user_id=session_id();
+				$user_time= time();
+				$qry="UPDATE `tbl` SET `uniqueid`='$user_id',`timeid`='$user_time' WHERE 
+			    `username` = '$username' AND `encpassword` = '$encpassword'";
+                $fetch=mysql_query($qry);
+                $_SESSION["sid"]=$user_id;
+                $_SESSION['LAST_ACTIVITY'] = $user_time;
+				header("location:loggedin.php");
+			    }  
+	            }
+				else
+				{
+					$_SESSION["msg"]="Invalid Username / Password";
+					header("location:".$_SERVER['PHP_SELF']);  
+					exit();
+				}
 			}		 
     } 
 }

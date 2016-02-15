@@ -35,12 +35,12 @@ session_start();
 
 <div id="adminuser" name="loggedin" class="fetch"> 
 <br/>
-    <h2>Welcome <span ><?php echo $res["name"];?></span></h2>
-        <div id="loggedinbox">
-              <div > <td > Email:&nbsp<?php echo $res["email"];?> </td> </div><br/>
-              <div > <td > Gender:&nbsp<?php echo $res["gender"];?> </td> </div><br/>
-              <div > <td > Phoneno:&nbsp<?php echo $res["mobile"];?> </td> </div>
-        </div>
+<h2>Welcome <span ><?php echo $res["name"];?></span></h2>
+<div id="loggedinbox">
+<div > <td > Email:&nbsp<?php echo $res["email"];?> </td> </div><br/>
+<div > <td > Gender:&nbsp<?php echo $res["gender"];?> </td> </div><br/>
+<div > <td > Phoneno:&nbsp<?php echo $res["mobile"];?> </td> </div>
+</div>
  </div>
 </center>
 </body>
