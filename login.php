@@ -5,7 +5,7 @@ session_start();
  	 if(isset($_SESSION["sid"]) && isset($_SESSION["rid"]))
 	 header("location:userlist.php");
      header("location:loggedin.php");
-  }
+   }
 
  require_once 'connection.php';
 
@@ -38,7 +38,7 @@ if(isset($_GET["add"]) && $_GET["add"]==334)
      	$_SESSION["msg"]="the current username is logged in.pls log out first"; 
 		header("location:".$_SERVER['PHP_SELF']);
 		exit();
-     }
+        }
  
 
 else{
@@ -64,8 +64,8 @@ else{
 		        header('Refresh:2; url=userlist.php');
 		        $var = "You are being redirected"."<br>"."Welcome 2 ADMIN panel";
 	           }
-
          }
+         
         else
         {
 			 $qry= "SELECT *  FROM `tbl` WHERE `username` = '$username' AND `encpassword` = '$encpassword'";

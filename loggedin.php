@@ -3,7 +3,6 @@ session_start();
     
     if(isset($_SESSION["sid"]) && isset($_SESSION["rid"]))
     header("location:userlist.php");
-      
 
     if(!isset($_SESSION["sid"])) {
     $_SESSION["msg"]="You need to login first";

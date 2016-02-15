@@ -9,15 +9,15 @@ session_start();
    if(isset($_SESSION["sid"]))
    {   
        
-   if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1400))
-   header("location:logout.php");
+     if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1400))
+     header("location:logout.php");
 
-   $sid=$_SESSION["sid"];
-   $qry="SELECT role_id FROM  `tbl` WHERE  `uniqueid` =  '$sid' ";
-   $fetch=mysql_query($qry);
-   $res=mysql_fetch_assoc($fetch);
-   if($res["role_id"] !== '1' && $res["role_id"] !== '2' )
-   header('location:login.php');
+     $sid=$_SESSION["sid"];
+     $qry="SELECT role_id FROM  `tbl` WHERE  `uniqueid` =  '$sid' ";
+     $fetch=mysql_query($qry);
+     $res=mysql_fetch_assoc($fetch);
+     if($res["role_id"] !== '1' && $res["role_id"] !== '2' )
+     header('location:login.php');
    }
 
    if(isset($_GET["submit"]))

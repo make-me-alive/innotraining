@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-    if ($_GET['user'] != "" && !isset($_SESSION["sid"])) {  
+    if ($_GET['user'] != "" && !isset($_SESSION["sid"])){  
        $_GET['user']= "";
        session_destroy();
        header("location:login.php");
