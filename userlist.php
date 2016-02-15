@@ -8,7 +8,6 @@ session_start();
 
    if(isset($_SESSION["sid"]))
    {   
-       
      if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1400))
      header("location:logout.php");
 
@@ -21,8 +20,7 @@ session_start();
    }
 
    if(isset($_GET["submit"]))
-   {   
-        
+   {
         $name=$_GET["search"];
         $qry="SELECT *  FROM `tbl` WHERE `name` LIKE '%$name%'";
         $raw=mysql_query($qry);

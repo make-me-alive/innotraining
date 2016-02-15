@@ -1,13 +1,13 @@
 <?php
 session_start();
 
-  if(isset($_SESSION["sid"])) {
- 	 if(isset($_SESSION["sid"]) && isset($_SESSION["rid"]))
-	 header("location:userlist.php");
-     header("location:loggedin.php");
-   }
+if(isset($_SESSION["sid"])) {
+if(isset($_SESSION["sid"]) && isset($_SESSION["rid"]))
+header("location:userlist.php");
+header("location:loggedin.php");
+}
 
- require_once 'connection.php';
+require_once 'connection.php';
 
 if(isset($_GET["add"]) && $_GET["add"]==334)
 {
@@ -19,26 +19,22 @@ if(isset($_GET["add"]) && $_GET["add"]==334)
 	 $fetch=mysql_query($qry);
 	 $res=mysql_fetch_assoc($fetch);
      $uid=$res["uniqueid"];
-     echo $uid;
      $tid =$res["timeid"];
-     echo $tid;
      $now =time();
 
-     if (!empty($tid) && !empty($uid)){
-     	echo "in tid"."<br/>";
-     	if ($now - $tid > 1400 ){
-     	echo "in time";	
-        $qry= "  UPDATE `tbl` SET `uniqueid`= '',`timeid`= '' WHERE `uniqueid`= '$uid'   ";
-        $fetch=mysql_query($qry);
-        session_destroy();
+	 if (!empty($tid) && !empty($uid)){
+	 	if ($now - $tid > 1400 ){	
+	    $qry= "  UPDATE `tbl` SET `uniqueid`= '',`timeid`= '' WHERE `uniqueid`= '$uid'   ";
+	    $fetch=mysql_query($qry);
+	    session_destroy();
 
-        echo "you didnot log out the previous time.log-in again with the same credentials to enter";
-        header("location:login.php");
-     	}
-     	$_SESSION["msg"]="the current username is logged in.pls log out first"; 
+	    $_SESSION["msg"]="you didnot log out the previous time.log-in again with the same credentials to enter";
+	    header("location:login.php");
+	 	}
+	 	$_SESSION["msg"]="the current username is logged in.pls log out first"; 
 		header("location:".$_SERVER['PHP_SELF']);
 		exit();
-        }
+	    }
  
 
 else{
@@ -47,55 +43,54 @@ else{
 		 $count=mysql_num_rows($fetch);
 		 $adminres=mysql_fetch_assoc($fetch);
          
-         if($adminres['role_id'] == 1 || $adminres['role_id'] == 2 )
-         {
-            
-            if(isset($_SESSION["sid"]))
-			header("location:loggedin.php");
-		    else{
-		        $user_id=session_id();
-		        $user_time= time();
-				$qry="UPDATE `tbl` SET `uniqueid`='$user_id',`timeid`='$user_time' WHERE 
-				`username` = '$username' AND `encpassword` = '$encpassword'";
-		        $fetch=mysql_query($qry);
-		        $_SESSION["sid"]=$user_id;
-		        $_SESSION["rid"]=$adminres['role_id'];
-                $_SESSION['LAST_ACTIVITY']=$user_time;
-		        header('Refresh:2; url=userlist.php');
-		        $var = "You are being redirected"."<br>"."Welcome 2 ADMIN panel";
-	           }
-         }
-         
-        else
-        {
-			 $qry= "SELECT *  FROM `tbl` WHERE `username` = '$username' AND `encpassword` = '$encpassword'";
-			 $fetch=mysql_query($qry);
-			 $count=mysql_num_rows($fetch);
-			 $res=mysql_fetch_assoc($fetch);
-			 if($count>0)
-			  {
-			  	if(isset($_SESSION["rid"]))
-				header("location:userlist.php");
-			    if(isset($_SESSION["sid"]))
-			    header("location:loggedin.php");
-				else{                            
-					$user_id=session_id();
-					$user_time= time();
+	         if($adminres['role_id'] == 1 || $adminres['role_id'] == 2 )
+	         {
+	            
+	            if(isset($_SESSION["sid"]))
+				header("location:loggedin.php");
+			    else{
+			        $user_id=session_id();
+			        $user_time= time();
 					$qry="UPDATE `tbl` SET `uniqueid`='$user_id',`timeid`='$user_time' WHERE 
-				    `username` = '$username' AND `encpassword` = '$encpassword'";
-	                $fetch=mysql_query($qry);
-	                $_SESSION["sid"]=$user_id;
-	                $_SESSION['LAST_ACTIVITY'] = $user_time;
-					header("location:loggedin.php");
-				    }  
-			  }
-			 else
-			 {
-				$_SESSION["msg"]="Invalid Username / Password";
-				header("location:".$_SERVER['PHP_SELF']);  
-				exit();
-			 }
-		}		 
+					`username` = '$username' AND `encpassword` = '$encpassword'";
+			        $fetch=mysql_query($qry);
+			        $_SESSION["sid"]=$user_id;
+			        $_SESSION["rid"]=$adminres['role_id'];
+	                $_SESSION['LAST_ACTIVITY']=$user_time;
+			        header('Refresh:2; url=userlist.php');
+			        $var = "You are being redirected"."<br>"."Welcome 2 ADMIN panel";
+		           }
+	         }
+	         
+	        else
+	        {
+				 $qry= "SELECT *  FROM `tbl` WHERE `username` = '$username' AND `encpassword` = '$encpassword'";
+				 $fetch=mysql_query($qry);
+				 $count=mysql_num_rows($fetch);
+				 $res=mysql_fetch_assoc($fetch);
+				        if($count>0) {
+					  	if(isset($_SESSION["rid"]))
+						header("location:userlist.php");
+					    if(isset($_SESSION["sid"]))
+					    header("location:loggedin.php");
+						else{                            
+						$user_id=session_id();
+						$user_time= time();
+						$qry="UPDATE `tbl` SET `uniqueid`='$user_id',`timeid`='$user_time' WHERE 
+					    `username` = '$username' AND `encpassword` = '$encpassword'";
+		                $fetch=mysql_query($qry);
+		                $_SESSION["sid"]=$user_id;
+		                $_SESSION['LAST_ACTIVITY'] = $user_time;
+						header("location:loggedin.php");
+					    }  
+			            }
+						else
+						{
+							$_SESSION["msg"]="Invalid Username / Password";
+							header("location:".$_SERVER['PHP_SELF']);  
+							exit();
+						}
+			}		 
     } 
 }
 ?>

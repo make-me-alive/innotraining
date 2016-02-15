@@ -1,30 +1,30 @@
 <?php
 session_start();
 
-    if ($_GET['user'] != "" && !isset($_SESSION["sid"])){  
-       $_GET['user']= "";
-       session_destroy();
-       header("location:login.php");
-    }
+  if ($_GET['user'] != "" && !isset($_SESSION["sid"])){  
+     $_GET['user']= "";
+     session_destroy();
+     header("location:login.php");
+  }
 
-    require_once 'connection.php';
+  require_once 'connection.php';
 
-    if(isset($_SESSION["sid"]))
-    {
-    	if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1400))
-        header("location:logout.php");
+  if(isset($_SESSION["sid"]))
+  {
+  	 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1400))
+     header("location:logout.php");
 
-       $sid=$_SESSION["sid"];
-       $rid=$_SESSION["rid"];
-       $query="SELECT uniqueid FROM  `tbl` WHERE  `role_id` ='$rid'";
-       $fetch1=mysql_query($query);
-       $result=mysql_fetch_assoc($fetch1);
-       $unid=$result["uniqueid"];
-       if( $unid != $sid )
-       header('location:login.php');
-       
-    }
-    
+     $sid=$_SESSION["sid"];
+     $rid=$_SESSION["rid"];
+     $query="SELECT uniqueid FROM  `tbl` WHERE  `role_id` ='$rid'";
+     $fetch1=mysql_query($query);
+     $result=mysql_fetch_assoc($fetch1);
+     $unid=$result["uniqueid"];
+     if( $unid != $sid )
+     header('location:login.php');
+     
+  }
+  
   $vid=$_REQUEST['user'];
 	$qry="SELECT *  FROM `tbl` WHERE `id` = $vid";
 	$raw=mysql_query($qry);
@@ -47,11 +47,11 @@ session_start();
 <br/>
 <div>
 <h2><?php echo $res["name"];?></h2>
-  <div id="loggedinbox">
-        <div > <td > Email:&nbsp<?php echo $res["email"];?> </td> </div><br/>
-        <div > <td > Gender:&nbsp<?php echo $res["gender"];?> </td> </div><br/>
-        <div > <td > PhoneNo:&nbsp<?php echo $res["mobile"];?> </td> </div>
-  </div>
+<div id="loggedinbox">
+<div > <td > Email:&nbsp<?php echo $res["email"];?> </td> </div><br/>
+<div > <td > Gender:&nbsp<?php echo $res["gender"];?> </td> </div><br/>
+<div > <td > PhoneNo:&nbsp<?php echo $res["mobile"];?> </td> </div>
+</div>
 </div>
 </div>
 </center>

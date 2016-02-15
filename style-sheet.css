@@ -1,192 +1,192 @@
-   #padanchor{
-    color: #fffff1;
-    text-decoration: none;
-    font-size: large;
-    font-family: sans-serif;
-    margin-left: 85%;
-   }
+#padanchor{
+color: #fffff1;
+text-decoration: none;
+font-size: large;
+font-family: sans-serif;
+margin-left: 85%;
+}
 
-   h1{
-    padding: 15px 0px 15px 0px;
-    margin: 0px;
-    background-color: #252525;
-    background-image: url("../myproject/images/logo.png");
-    background-repeat: no-repeat;
-    background-position: 12%;
-    }
+h1{
+padding: 15px 0px 15px 0px;
+margin: 0px;
+background-color: #252525;
+background-image: url("../myproject/images/logo.png");
+background-repeat: no-repeat;
+background-position: 12%;
+}
 
-   h2{   
-   color: #ffffff;
-   font-family: sans-serif;
-   padding-top: 2%;
-   }
-   
-   #move{
-   padding-inline-start: 34%;	
-   }
+h2{   
+color: #ffffff;
+font-family: sans-serif;
+padding-top: 2%;
+}
 
-   #padding4gender{
-   padding: 0px 0px 0px 60px;
-   }
+#move{
+padding-inline-start: 34%;	
+}
 
-   span{
-   font-weight: bold;
-   }
+#padding4gender{
+padding: 0px 0px 0px 60px;
+}
 
-   h2 span {
-   background: linear-gradient(to top,rgba(255, 165, 0, 0.96),rgba(255, 224, 0, 0.9));
-   color: black;
-   padding: 4px 11px 5px 11px;
-   font-family: sans-serif;
-   }
+span{
+font-weight: bold;
+}
 
-   h2 div{
-   color: #fff;
-   font-size: -webkit-xxx-large;
-   }
+h2 span {
+background: linear-gradient(to top,rgba(255, 165, 0, 0.96),rgba(255, 224, 0, 0.9));
+color: black;
+padding: 4px 11px 5px 11px;
+font-family: sans-serif;
+}
 
-   .fetch{   
-   color: #fff;
-   font-size: 20px;
-   }
+h2 div{
+color: #fff;
+font-size: -webkit-xxx-large;
+}
 
-   #loggedinbox{    
-   margin-top: 5%;
-   background-color: #6d61a9;
-   width: 120px;
-   padding: 2% 21% 2% 3%;
-   box-shadow: inset 0 0 6px #6D61A9;
-   font-family: sans-serif;
-   border-radius: 5px;
-   }
+.fetch{   
+color: #fff;
+font-size: 20px;
+}
 
-   body{   
-   margin: 0px;
-   background: radial-gradient(ellipse,#9D8Ed6,#7467af);
-   }
+#loggedinbox{    
+margin-top: 5%;
+background-color: #6d61a9;
+width: 120px;
+padding: 2% 21% 2% 3%;
+box-shadow: inset 0 0 6px #6D61A9;
+font-family: sans-serif;
+border-radius: 5px;
+}
 
-    input{
-    height: auto;
-    width: auto;
-    padding: 8px 171px 8px 15px;
-    border-radius: 5px;
-    border: 5px solid #7B70BC;
-    }
+body{   
+margin: 0px;
+background: radial-gradient(ellipse,#9D8Ed6,#7467af);
+}
 
-   .padding{
-    margin-top: 3%;
-    }  
+input{
+height: auto;
+width: auto;
+padding: 8px 171px 8px 15px;
+border-radius: 5px;
+border: 5px solid #7B70BC;
+}
 
-   .gender-text{
-    color: #fff;
-    padding: 0px 100px 0px 0px;
-	}
+.padding{
+margin-top: 3%;
+}  
 
-    #registration,#login{
-    display: table;
-    margin: 3%;
-	}
+.gender-text{
+color: #fff;
+padding: 0px 100px 0px 0px;
+}
 
-	#name,#username{
-	background-image: url("../myproject/images/name.png");
-	background-position: 98%;
-	background-size: 5%;
-	background-repeat: no-repeat;
-	}
-	
-	#email{
-	background-image: url("../myproject/images/mail.png");
-	background-position: 99%;
-	background-size: 8%;
-	background-repeat: no-repeat;
-	}
+#registration,#login{
+display: table;
+margin: 3%;
+}
 
-	#mobnum{
-	background-image: url("../myproject/images/con.png");
-	background-position: 98%;
-	background-size: 5%;
-	background-repeat: no-repeat;
-	}
+#name,#username{
+background-image: url("../myproject/images/name.png");
+background-position: 98%;
+background-size: 5%;
+background-repeat: no-repeat;
+}
 
-	#password,#confirmpass{
-	background-image: url("../myproject/images/pass.png");
-	background-position: 98%;
-	background-size: 6%;
-	background-repeat: no-repeat;
-	}
+#email{
+background-image: url("../myproject/images/mail.png");
+background-position: 99%;
+background-size: 8%;
+background-repeat: no-repeat;
+}
 
-	#search{
-	margin-top: 5%;
-	margin-left: 10%;
-	padding: 8px 72px 8px 21px;
-	}
+#mobnum{
+background-image: url("../myproject/images/con.png");
+background-position: 98%;
+background-size: 5%;
+background-repeat: no-repeat;
+}
 
-	#button{
-    text-shadow: 0px 1px white;
-    border-width: 0px;
-    height: auto;
-    width: 100%;
-    padding: 12px;
-    border-radius: 5px;
-    background: linear-gradient(to top,#ffa700,#ffcf00);
-    font-size: 15px;
-    cursor: pointer;
-    margin: auto;
-	}
+#password,#confirmpass{
+background-image: url("../myproject/images/pass.png");
+background-position: 98%;
+background-size: 6%;
+background-repeat: no-repeat;
+}
 
-    #button1{
-    background: linear-gradient(to top,#ffa700,#ffcf00);
-    border-width: 0px;
-    padding: 10px 17px 10px 17px;
-    cursor: pointer;
-    text-shadow: 0px 1px white;
-    }
+#search{
+margin-top: 5%;
+margin-left: 10%;
+padding: 8px 72px 8px 21px;
+}
 
-	#button2{
-	border-width: 0em;
-    background: linear-gradient(to top,#ffa700,#ffcf00);
-    padding: 10px;
-    cursor: pointer;
-    text-shadow: 0px 1px white;
-    margin-top: 1%;
-    margin-left: 70%;
-	}
+#button{
+text-shadow: 0px 1px white;
+border-width: 0px;
+height: auto;
+width: 100%;
+padding: 12px;
+border-radius: 5px;
+background: linear-gradient(to top,#ffa700,#ffcf00);
+font-size: 15px;
+cursor: pointer;
+margin: auto;
+}
 
-	table{   
-	color: white;
-    background: #6d61a9;
-    display: table;
-    box-shadow: inset 0 0 15px #8174C3;
-    margin: auto;
-    padding-top: 1%;
-    font-family: sans-serif;
-    margin-top: 1%;
-	}
+#button1{
+background: linear-gradient(to top,#ffa700,#ffcf00);
+border-width: 0px;
+padding: 10px 17px 10px 17px;
+cursor: pointer;
+text-shadow: 0px 1px white;
+}
 
-	#shiftname{
-	padding-left: 5%;
-	}
+#button2{
+border-width: 0em;
+background: linear-gradient(to top,#ffa700,#ffcf00);
+padding: 10px;
+cursor: pointer;
+text-shadow: 0px 1px white;
+margin-top: 1%;
+margin-left: 70%;
+}
 
-	#shiftemail{
-	padding-left: 5%;
-	}
+table{   
+color: white;
+background: #6d61a9;
+display: table;
+box-shadow: inset 0 0 15px #8174C3;
+margin: auto;
+padding-top: 1%;
+font-family: sans-serif;
+margin-top: 1%;
+}
 
-	#viewdesign{    
-	color: white;
-	background: #8174bc;
-	text-decoration: none;
-	box-shadow: inset 0 0 11px #8174D3;
-	border-radius: 3px;
-	padding: 4px 5px 4px 5px;
-	}
+#shiftname{
+padding-left: 5%;
+}
 
-	.bottom{
-	padding-bottom: 4%;
-	}
+#shiftemail{
+padding-left: 5%;
+}
 
-    #checkbox{
-    cursor: pointer;
-    width: 20px;
-    height: 20px;
-    }
+#viewdesign{    
+color: white;
+background: #8174bc;
+text-decoration: none;
+box-shadow: inset 0 0 11px #8174D3;
+border-radius: 3px;
+padding: 4px 5px 4px 5px;
+}
+
+.bottom{
+padding-bottom: 4%;
+}
+
+#checkbox{
+cursor: pointer;
+width: 20px;
+height: 20px;
+}
 

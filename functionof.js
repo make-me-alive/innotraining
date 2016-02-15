@@ -95,11 +95,10 @@ function validation()
         return false; 
     }
      
-
-    else {
-	   var success= alert("form being processed !!!");
-	   success=1;
-    }
+   else {
+   var success= alert("form being processed !!!");
+   success=1;
+   }
 }
 
 

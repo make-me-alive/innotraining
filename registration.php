@@ -1,6 +1,6 @@
 <?php 
 
-  require_once 'connection.php'; 
+require_once 'connection.php'; 
    
 if(!empty($_POST))
 { 
@@ -53,25 +53,25 @@ if(!empty($_POST))
 	if(empty($arr))
 	{
 			
-	 function insertdata($name,$username,$email,$gender,$mobile,$encpassword) {
-     $qry="INSERT INTO `tbl` (`id`, `name`, `email`, `username`,`gender`, `mobile`, 
-     `encpassword`,`uniqueid`,`timeid`,`role_id`)VALUES (NULL,'$name','$email',
-     '$username','$gender', '$mobile', '$encpassword','','','0')";
-	 mysql_query($qry);
-	 return true;
-	 }
+		 function insertdata($name,$username,$email,$gender,$mobile,$encpassword) {
+	     $qry="INSERT INTO `tbl` (`id`, `name`, `email`, `username`,`gender`, `mobile`, 
+	     `encpassword`,`uniqueid`,`timeid`,`role_id`)VALUES (NULL,'$name','$email',
+	     '$username','$gender', '$mobile', '$encpassword','','','0')";
+		 mysql_query($qry);
+		 return true;
+		 }
 
 			
-   $all="SELECT * FROM  `tbl` WHERE  `email`='$email'";
-   $attain=mysql_query($all);
-   $check=mysql_fetch_assoc($attain); 
+		   $all="SELECT * FROM  `tbl` WHERE  `email`='$email'";
+		   $attain=mysql_query($all);
+		   $check=mysql_fetch_assoc($attain); 
 
 
-   if($check["email"] == $email)
-   {
-   header('Refresh:5; url=registration.php');
-   $msg[0] = "email already in use please register again with another email-id";
-   }
+	     if($check["email"] == $email)
+		   {
+		   header('Refresh:5; url=registration.php');
+		   $msg[0] = "email already in use please register again with another email-id";
+		   }
 
 		else 
 		{
@@ -84,53 +84,53 @@ if(!empty($_POST))
             
             
 
-        if($repeatinguser == $detailcheck["username"])
-        {  
-        	
-           $count = "SELECT MAX(id) FROM `tbl`";
-           $maximum = mysql_query($count);
-           $v = mysql_fetch_row($maximum);
-		   $id_value = $v[0];
-		   $id_value++;
-		   $repeatinguser="{$id_value}{$repeatinguser}";
-		   $ups=$qry="INSERT INTO `tbl` (`id`, `name`, `email`, `username`,`gender`, `mobile`, 
-		     `encpassword`,`uniqueid`,`timeid`,`role_id`)VALUES (NULL,'$name','$email',
-		     '$repeatinguser','$gender', '$mobile', '$encpassword','','','0')";
-		   $convus=mysql_query($ups);
-		   header('Refresh:10; url=login.php');
-           $msg[1] = "Successfully registered";
-           $msg[2]="an email has been sent to your registered email-id"."<br>"."Plz log in with the same credentials".
-           "<br>"."the page is being transferred plz wait"."<br>"."thankyou for registration";
+	        if($repeatinguser == $detailcheck["username"])
+	        {  
+	        	
+	           $count = "SELECT MAX(id) FROM `tbl`";
+	           $maximum = mysql_query($count);
+	           $v = mysql_fetch_row($maximum);
+			   $id_value = $v[0];
+			   $id_value++;
+			   $repeatinguser="{$id_value}{$repeatinguser}";
+			   $ups=$qry="INSERT INTO `tbl` (`id`, `name`, `email`, `username`,`gender`, `mobile`, 
+			     `encpassword`,`uniqueid`,`timeid`,`role_id`)VALUES (NULL,'$name','$email',
+			     '$repeatinguser','$gender', '$mobile', '$encpassword','','','0')";
+			   $convus=mysql_query($ups);
+			   header('Refresh:10; url=login.php');
+	           $msg[1] = "Successfully registered";
+	           $msg[2]="an email has been sent to your registered email-id"."<br>"."Plz log in with the same credentials".
+	           "<br>"."the page is being transferred plz wait"."<br>"."thankyou for registration";
+	           
+	        }
            
-        }
-           
-        else
-		{  
-		   $resource = insertdata($name,$username,$email,$gender,$mobile,$encpassword);
+	        else
+			{  
+			   $resource = insertdata($name,$username,$email,$gender,$mobile,$encpassword);
 
-		    if($resource)
-		    {
-		    header('Refresh:10; url=login.php');
-			$msg[1] = "Successfully registered";
-			$msg[2]="an email has been sent to your registered email-id"."<br>"."Plz log in with the same credentials".
-             "<br>"."the page is being transferred plz wait"."<br>"."thankyou for registration";
-		    }
-			else
-		    {
-		    header('Refresh:2; url=registration.php');
-			$msg[3] = "Could not process";
-	       
-		    }
-        }
+			    if($resource)
+			    {
+			    header('Refresh:10; url=login.php');
+				$msg[1] = "Successfully registered";
+				$msg[2]="an email has been sent to your registered email-id"."<br>"."Plz log in with the same credentials".
+	             "<br>"."the page is being transferred plz wait"."<br>"."thankyou for registration";
+			    }
+				else
+			    {
+			    header('Refresh:2; url=registration.php');
+				$msg[3] = "Could not process";
+		       
+			    }
+	        }
 	
-        if(!empty($msg[1]) )
-        {
-           $to=$email;
-		   $subject="successfully registered to innotraining";
-		   $message="your username for login is:$repeatinguser<br/>";
-		   $from="From :innotrainning@drupal.com ";
-		   mail($to,$subject,$message,$from);
-        }
+	        if(!empty($msg[1]) )
+	        {
+	           $to=$email;
+			   $subject="successfully registered to innotraining";
+			   $message="your username for login is:$repeatinguser<br/>";
+			   $from="From :innotrainning@drupal.com ";
+			   mail($to,$subject,$message,$from);
+	        }
 
         }
 	} 
