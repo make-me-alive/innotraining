@@ -67,7 +67,7 @@ if(!empty($_POST))
 		   $check=mysql_fetch_assoc($attain); 
 
 
-	     if($check["email"] == $email)
+	       if($check["email"] == $email)
 		   {
 		   header('Refresh:5; url=registration.php');
 		   $msg[0] = "email already in use please register again with another email-id";
@@ -94,8 +94,8 @@ if(!empty($_POST))
 			   $id_value++;
 			   $repeatinguser="{$id_value}{$repeatinguser}";
 			   $ups=$qry="INSERT INTO `tbl` (`id`, `name`, `email`, `username`,`gender`, `mobile`, 
-			     `encpassword`,`uniqueid`,`timeid`,`role_id`)VALUES (NULL,'$name','$email',
-			     '$repeatinguser','$gender', '$mobile', '$encpassword','','','0')";
+		       `encpassword`,`uniqueid`,`timeid`,`role_id`)VALUES (NULL,'$name','$email',
+		       '$repeatinguser','$gender', '$mobile', '$encpassword','','','0')";
 			   $convus=mysql_query($ups);
 			   header('Refresh:10; url=login.php');
 	           $msg[1] = "Successfully registered";
@@ -106,7 +106,7 @@ if(!empty($_POST))
            
 	        else
 			{  
-			   $resource = insertdata($name,$username,$email,$gender,$mobile,$encpassword);
+			    $resource = insertdata($name,$username,$email,$gender,$mobile,$encpassword);
 
 			    if($resource)
 			    {
