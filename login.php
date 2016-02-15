@@ -1,35 +1,45 @@
 <?php
 session_start();
 
-         if(isset($_SESSION["sid"]))
-		 {   
+  if(isset($_SESSION["sid"])) {
+ 	 if(isset($_SESSION["sid"]) && isset($_SESSION["rid"]))
+	 header("location:userlist.php");
+     header("location:loggedin.php");
+  }
 
-		 	 if(isset($_SESSION["sid"]) && isset($_SESSION["rid"]))
-			 { 
-		
-			   header("location:userlist.php");
-			 }
-    	
-		   header("location:loggedin.php");
-		 }
-
-  $conn=mysql_connect("localhost","root","password1");
-  mysql_select_db("tbl_user",$conn);
+ require_once 'connection.php';
 
 if(isset($_GET["add"]) && $_GET["add"]==334)
 {
 	 $username=$_POST["username"];
 	 $password=$_POST["password"];
 	 $encpassword=md5($password);
-	 $qry= "SELECT uniqueid  FROM `tbl` WHERE `username` = '$username' AND `encpassword` = '$encpassword'";
+     $qry= " SELECT `uniqueid`, `timeid`FROM `tbl` WHERE `username` = '$username' 
+     AND `encpassword` = '$encpassword' ";
 	 $fetch=mysql_query($qry);
 	 $res=mysql_fetch_assoc($fetch);
      $uid=$res["uniqueid"];
-     if (!empty($uid)) {
-     	$_SESSION["msg"]="the current username is logged in.pls log out first";
-		header("location:".$_SERVER['PHP_SELF']);  
+     echo $uid;
+     $tid =$res["timeid"];
+     echo $tid;
+     $now =time();
+
+     if (!empty($tid) && !empty($uid)){
+     	echo "in tid"."<br/>";
+     	if ($now - $tid > 1400 ){
+     	echo "in time";	
+        $qry= "  UPDATE `tbl` SET `uniqueid`= '',`timeid`= '' WHERE `uniqueid`= '$uid'   ";
+        $fetch=mysql_query($qry);
+        session_destroy();
+
+        echo "you didnot log out the previous time.log-in again with the same credentials to enter";
+        header("location:login.php");
+     	}
+     	$_SESSION["msg"]="the current username is logged in.pls log out first"; 
+		header("location:".$_SERVER['PHP_SELF']);
 		exit();
      }
+ 
 
 else{
          $qry="SELECT role_id  FROM `tbl` WHERE `username` = '$username' AND `encpassword` = '$encpassword'";
@@ -43,15 +53,16 @@ else{
             if(isset($_SESSION["sid"]))
 			header("location:loggedin.php");
 		    else{
-	        $user_id=session_id();
-			$qry= "UPDATE `tbl` SET `uniqueid`='$user_id' WHERE `username` = '$username' 
-			AND `encpassword` = '$encpassword'";
-	        $fetch=mysql_query($qry);
-	        $_SESSION["sid"]=$user_id;
-	        $_SESSION["rid"]=$adminres['role_id'];
-	        echo $_SESSION["sid"];
-            header('Refresh:2; url=userlist.php');
-	        $var = "You are being redirected"."<br>"."Welcome 2 ADMIN panel";
+		        $user_id=session_id();
+		        $user_time= time();
+				$qry="UPDATE `tbl` SET `uniqueid`='$user_id',`timeid`='$user_time' WHERE 
+				`username` = '$username' AND `encpassword` = '$encpassword'";
+		        $fetch=mysql_query($qry);
+		        $_SESSION["sid"]=$user_id;
+		        $_SESSION["rid"]=$adminres['role_id'];
+                $_SESSION['LAST_ACTIVITY']=$user_time;
+		        header('Refresh:2; url=userlist.php');
+		        $var = "You are being redirected"."<br>"."Welcome 2 ADMIN panel";
 	           }
 
          }
@@ -68,12 +79,14 @@ else{
 			    if(isset($_SESSION["sid"]))
 			    header("location:loggedin.php");
 				else{                            
-						$user_id=session_id();
-						$qry= "UPDATE `tbl` SET `uniqueid`='$user_id' WHERE `username` = '$username' 
-						AND `encpassword` = '$encpassword'";
-		                $fetch=mysql_query($qry);
-		                $_SESSION["sid"]=$user_id;
-						header("location:loggedin.php");
+					$user_id=session_id();
+					$user_time= time();
+					$qry="UPDATE `tbl` SET `uniqueid`='$user_id',`timeid`='$user_time' WHERE 
+				    `username` = '$username' AND `encpassword` = '$encpassword'";
+	                $fetch=mysql_query($qry);
+	                $_SESSION["sid"]=$user_id;
+	                $_SESSION['LAST_ACTIVITY'] = $user_time;
+					header("location:loggedin.php");
 				    }  
 			  }
 			 else
@@ -94,41 +107,37 @@ else{
 <title>Login Panel</title>
 </head>
 <body>
-<h1>
-<div ><a id="padanchor" href="registration.php">REGISTER</a>	</div>
-</h1>
+<h1><a id="padanchor" href="registration.php">REGISTER</a></h1>
 <center>
 	<div id="login" name="login"> 
 		  <form  name="myfrm" action="<?php echo $_SERVER['PHP_SELF'];?>?add=334" method="POST">     
-		   <!--  onsubmit="validate(this);" -->
-     		<h2>Login</h2>
+		 
+	<h2 id="move">Login</h2>
 
-				<div class="padding">
-					<td> 
-					     <input type="text"  name="username" size="12" id="username" 
-					     placeholder="Type in your username"  >
+	<div class="padding">
+		<td> 
+		     <input type="text"  name="username"  id="username" 
+		     placeholder="Type in your username"  >
 
-				    </td> 
-				</div>
+	    </td> 
+	</div>
 
-			<div  class="padding">
-				
-				<td>
-					<input type="password" name="password" id="password" 
-					placeholder="Type in  your password" >
-				</td>
+<div  class="padding">
+	
+	<td>
+		<input type="password" name="password" id="password" 
+		placeholder="Type in  your password" >
+	</td>
 
-			</div>
+</div>
 						
 	<div class="padding">
 		
 	<td>
 	<input id="button" type="submit" name="log-in" value="Login" >
-	  <!--onclick="validate(form)"  -->
-	   <!-- onclick=" return validation()" -->
 	</td>
 	<br />
-	<?php
+<?php
 
 if(isset($_SESSION["msg"]))
  {
