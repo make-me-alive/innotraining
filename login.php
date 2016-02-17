@@ -22,7 +22,7 @@ if(isset($_GET["add"]) && $_GET["add"]==334)
      $tid =$res["timeid"];
      $now =time();
 
-	 if (!empty($tid) && !empty($uid)){
+	    if (!empty($tid) && !empty($uid)){
 	 	if ($now - $tid > 1400 ){	
 	    $qry= "  UPDATE `tbl` SET `uniqueid`= '',`timeid`= '' WHERE `uniqueid`= '$uid'   ";
 	    $fetch=mysql_query($qry);
@@ -48,7 +48,7 @@ else{
 	            
 	            if(isset($_SESSION["sid"]))
 				header("location:loggedin.php");
-			    else{
+			        else{
 			        $user_id=session_id();
 			        $user_time= time();
 					$qry="UPDATE `tbl` SET `uniqueid`='$user_id',`timeid`='$user_time' WHERE 
@@ -59,7 +59,7 @@ else{
 	                $_SESSION['LAST_ACTIVITY']=$user_time;
 			        header('Refresh:2; url=userlist.php');
 			        $var = "You are being redirected"."<br>"."Welcome 2 ADMIN panel";
-		           }
+		            }
 	         }
 	         
 	        else
@@ -84,11 +84,10 @@ else{
 				header("location:loggedin.php");
 			    }  
 	            }
-				else
-				{
-					$_SESSION["msg"]="Invalid Username / Password";
-					header("location:".$_SERVER['PHP_SELF']);  
-					exit();
+				else {
+				$_SESSION["msg"]="Invalid Username / Password";
+				header("location:".$_SERVER['PHP_SELF']);  
+				exit();
 				}
 			}		 
     } 
