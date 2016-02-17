@@ -147,18 +147,16 @@ if(!empty($_POST))
 	<link rel="stylesheet" type="text/css" href="style-sheet.css">
 	<script type="text/javascript" src="functionof.js">  </script> 
 	</head>
-	
-<!-- <h1 > -->
+
 <table id="header" width="100%"><tr><td onclick="window.location.href='registration.php'" id="logologin"></td> 
 <td><a  id="padanchor" href="login.php">LOGIN</a></td></tr></table>
-<!-- </h1> -->
  
 <body>
 <center>
              
 <form  name="myfrm" action="registration.php" method="POST">
 
- <div id="registration" name="registration">
+<div id="registration" name="registration">
 
 <h2 id="move" > Register Here</h2>
 

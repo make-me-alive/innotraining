@@ -1,4 +1,3 @@
- 
 <?php
 
 $conn=mysql_connect("localhost","root","password1");
