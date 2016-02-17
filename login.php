@@ -102,7 +102,9 @@ else{
 <title>Login Panel</title>
 </head>
 <body>
-<h1><a id="padanchor" href="registration.php">REGISTER</a></h1>
+<table id="header" width="100%"><tr><td onclick="window.location.href='registration.php'" id="logologin"></td>
+<td><a id="padanchor" href="registration.php">REGISTER</a></td></tr></table>
+
 <center>
 	<div id="login" name="login"> 
 		  <form  name="myfrm" action="<?php echo $_SERVER['PHP_SELF'];?>?add=334" method="POST">     

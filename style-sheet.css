@@ -1,19 +1,45 @@
 #padanchor{
-color: #fffff1;
-text-decoration: none;
-font-size: large;
-font-family: sans-serif;
-margin-left: 85%;
+
+    color: #fffff1;
+    text-decoration: none;
+    font-size: large;
+    font-family: sans-serif;
+    float: right;
+    padding: 8px 0px 0px 0px;
+    margin-right: 10%;
 }
 
-h1{
-padding: 15px 0px 15px 0px;
+#header{
 margin: 0px;
 background-color: #252525;
-background-image: url("../myproject/images/logo.png");
-background-repeat: no-repeat;
-background-position: 12%;
+
+
+/*background-repeat: no-repeat;*/
+
 }
+
+ /*#logo{
+
+    background-image: url("../myproject/images/logo.png");
+    cursor: pointer;
+    padding: 41px 23px 21px 0px;
+    width: 51%;
+    float: left;
+    margin-left: 32%;
+}*/
+
+#logologin{
+	background-image: url("../myproject/images/logo.png");
+    cursor: pointer;
+    padding: 36px 16px 19px 1px;
+    width: 100%;
+    float: left;
+    margin-left: 35%;
+    background-repeat: no-repeat;
+}
+
+	
+
 
 h2{   
 color: #ffffff;
@@ -152,7 +178,7 @@ margin-top: 1%;
 margin-left: 70%;
 }
 
-table{   
+#userlist{   
 color: white;
 background: #6d61a9;
 display: table;

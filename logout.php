@@ -5,7 +5,7 @@ session_start();
 
 	if(isset($_SESSION["sid"])) {   
 
-	$qry= "  UPDATE `tbl` SET `uniqueid`= '',`timeid`= '' WHERE `uniqueid`= '".$_SESSION['sid']."'   ";
+	$qry= "UPDATE `tbl` SET `uniqueid`= '',`timeid`= '' WHERE `uniqueid`= '".$_SESSION['sid']."'";
 	$fetch=mysql_query($qry);
 
 	session_destroy();
