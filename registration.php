@@ -147,7 +147,12 @@ if(!empty($_POST))
 	<link rel="stylesheet" type="text/css" href="style-sheet.css">
 	<script type="text/javascript" src="functionof.js">  </script> 
 	</head>
-    <h1><a  id="padanchor" href="login.php">LOGIN</a></h1>
+	
+<!-- <h1 > -->
+<table id="header" width="100%"><tr><td onclick="window.location.href='registration.php'" id="logologin"></td> 
+<td><a  id="padanchor" href="login.php">LOGIN</a></td></tr></table>
+<!-- </h1> -->
+ 
 <body>
 <center>
              
@@ -183,7 +188,7 @@ placeholder="Male" > <label for="male">Male</label>
 <div class="padding">
 	<td> 
 	<input type="text" name="mobile" id="mobnum" 
-	placeholder="Enter the 10 digit no only"  oninput="nu()" onblur="onu()">
+	placeholder="Enter your phone.no."  oninput="nu()" onblur="onu()">
 	</td>
 
 </div>
@@ -191,14 +196,14 @@ placeholder="Male" > <label for="male">Male</label>
 <div  class="padding">
 <td>
 	<input type="password" name="password" id="password" 
-	placeholder="Enter your password" oninput="p()" onblur="op()">
+	placeholder="Create a password" oninput="p()" onblur="op()">
 </td>
 </div>
 
 <div class="padding">
 <td>
 	<input type="password" name="confirmpass" id="confirmpass" 
-	placeholder="Enter the same password"  oninput="cp()" onblur="ocp()">
+	placeholder="Confirm password"  oninput="cp()" onblur="ocp()">
 </td>
 </div>
 

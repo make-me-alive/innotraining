@@ -84,8 +84,9 @@ session_start();
 <link rel="stylesheet" type="text/css" href="style-sheet.css">
 <title>ADMIN-panel</title>
 </head>
-<h1><a id="padanchor" href="logout.php">LOGOUT</a></h1>
-<body >
+<table id="header" width="100%"><tr><td onclick="window.location.href='registration.php'" id="logologin"></td> 
+<td><a id="padanchor" href="logout.php">LOGOUT</a></td></tr></table>
+<body>
 
 <form  name="checkfrm" action="userlist.php" method="GET">
  <div class="padding">
@@ -96,7 +97,7 @@ session_start();
 </div>
  <td><?php echo $msg; ?> </td>
 
-  <table  width="80%">
+  <table id="userlist" width="80%">
   <tr> 
     <td id="shiftname">Name</td>
     <td id="shiftemail">Email</td>

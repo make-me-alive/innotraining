@@ -29,7 +29,8 @@ session_start();
 <link rel="stylesheet" type="text/css" href="style-sheet.css">
 <title>logged-in</title>
 </head>
-<h1><a id="padanchor" href="logout.php">LOGOUT</a></h1>
+<table id="header" width="100%"><tr><td onclick="window.location.href='registration.php'" id="logologin"></td> 
+<td><a id="padanchor" href="logout.php">LOGOUT</a></td></tr></table>
 <body  >
 <center>
 
